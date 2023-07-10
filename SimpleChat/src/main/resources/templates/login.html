@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Login / Simple Chat</title>
+</head>
+<body>
+    <h1>Log in to Simple Chat</h1>
+
+    <form method="post" action="/login" th:object="${loginForm}">
+        <table>
+            <tr>
+                <td>
+                    <label>Email Address</label>
+                </td>
+                <td>
+                    <input type="email" required th:field="*{mailAddress}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" required th:field="*{password}">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Log in</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
