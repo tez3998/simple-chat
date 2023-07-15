@@ -75,15 +75,7 @@ public class MessageController {
 	@PostMapping("/receive")
 	@ResponseBody
 	public List<MessageJson> receive(@RequestBody MessageRequestJson messageRequestJson) {
-		//logger.info(messageRequestJson.getLastMessageDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")).toString());
-		//String timestampStr = messageRequestJson.getLastMessageDateTime().toString().replace("T", " ");
-		logger.info(messageRequestJson.getLastMessageDateTime().toString());
-		//DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssssss");
-		//logger.info(messageRequestJson.getLastMessageDateTime().format(dateTimeFormatter).toString());
-		
-		//List<Message> messages = this.messageRepository.findFromTimestamp(messageRequestJson.getMyId(), messageRequestJson.getPeerId(), messageRequestJson.getLastMessageDateTime());
 		List<Message> messages = this.messageRepository.findFromTimestamp(messageRequestJson.getLastMessageDateTime());
-		logger.info(Integer.valueOf(messages.size()).toString());
 		List<MessageJson> messageJsons = new ArrayList<>();
 		for (Message m : messages) {
 			messageJsons.add(m.toMessageJson());
