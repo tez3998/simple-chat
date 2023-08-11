@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.simplechat.beans.SessionControl;
+import com.example.simplechat.dtos.MessageJson;
+import com.example.simplechat.dtos.MessageRequestJson;
 import com.example.simplechat.entities.Message;
-import com.example.simplechat.entities.MessageJson;
-import com.example.simplechat.entities.MessageRequestJson;
 import com.example.simplechat.entities.User;
 import com.example.simplechat.repositories.MessageRepository;
 import com.example.simplechat.repositories.UserRepository;

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.example.simplechat.entities.LoginForm;
+import com.example.simplechat.dtos.LoginForm;
 import com.example.simplechat.entities.User;
 import com.example.simplechat.repositories.UserRepository;
 

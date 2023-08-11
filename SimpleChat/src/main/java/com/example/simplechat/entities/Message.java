@@ -2,6 +2,8 @@ package com.example.simplechat.entities;
 
 import java.time.LocalDateTime;
 
+import com.example.simplechat.dtos.MessageJson;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

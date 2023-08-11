@@ -1,5 +1,7 @@
 package com.example.simplechat.entities;
 
+import com.example.simplechat.dtos.LoginForm;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.example.simplechat.entities;
+package com.example.simplechat.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

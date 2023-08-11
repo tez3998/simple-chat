@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.simplechat.beans.SessionControl;
-import com.example.simplechat.entities.LoginForm;
-import com.example.simplechat.entities.SignupForm;
+import com.example.simplechat.dtos.LoginForm;
+import com.example.simplechat.dtos.SignupForm;
 import com.example.simplechat.entities.User;
 import com.example.simplechat.repositories.UserRepository;
 

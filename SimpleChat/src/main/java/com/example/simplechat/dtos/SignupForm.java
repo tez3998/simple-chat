@@ -1,8 +1,10 @@
-package com.example.simplechat.entities;
+package com.example.simplechat.dtos;
 
 import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.simplechat.entities.User;
 
 import lombok.Data;
 
