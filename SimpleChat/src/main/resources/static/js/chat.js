@@ -1,8 +1,8 @@
 "use strict";
 
-const myId = $("#my_id").text();
-const peerId = $("#peer_id").text();
-const baseUrl = "http://" + $(location).attr("host");
+let myId;
+let peerId;
+let baseUrl;
 
 function moveToBottom() {
 	const bottom = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -75,17 +75,16 @@ function receiveMessage() {
 	const messageItem = $(".message");
 	
 	messageItem.ready(function() {
-		const lastMessageDataTime = messageItem.last().children(".sent_datetime").text();
+		let lastMessageDataTime = messageItem.last().children(".sent_datetime").text();
+		if (lastMessageDataTime.length == 0) {
+			lastMessageDataTime = null;
+		}
 	
 		console.log(lastMessageDataTime);
 		
-		if(!lastMessageDataTime) {
-			return;
-		}
-		
 		const messageRequest = JSON.stringify({
-			senderId: myId,
-			receiverId: peerId,
+			myId: myId,
+			peerId: peerId,
 			lastMessageDateTime: lastMessageDataTime
 		});
 		
@@ -118,6 +117,10 @@ function receiveMessage() {
 }
 
 $(function() {
+	myId = $("#my_id").text();
+	peerId = $("#peer_id").text();
+	baseUrl = "http://" + $(location).attr("host");
+	
 	$("form").on("submit", function(e){
 		e.preventDefault();
 	});

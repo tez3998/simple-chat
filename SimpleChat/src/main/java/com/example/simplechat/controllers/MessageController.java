@@ -1,5 +1,6 @@
 package com.example.simplechat.controllers;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -75,7 +76,22 @@ public class MessageController {
 	@PostMapping("/receive")
 	@ResponseBody
 	public List<MessageJson> receive(@RequestBody MessageRequestJson messageRequestJson) {
-		List<Message> messages = this.messageRepository.findFromTimestamp(messageRequestJson.getLastMessageDateTime());
+		List<Message> messages;
+		LocalDateTime lastMessageDateTime = messageRequestJson.getLastMessageDateTime();
+		
+		System.out.println(lastMessageDateTime);
+		
+		if (lastMessageDateTime == null) {
+			System.out.println("nullだった");
+			User loginUser = sessionControl.getUser();
+			Integer myId = loginUser.getId();
+			Integer peerId = messageRequestJson.getPeerId();
+			System.out.println(String.format("%d, %d", myId, peerId));
+			messages = this.messageRepository.findByUserIdsOrderByTimestamp(myId, peerId);
+		} else {
+			messages = this.messageRepository.findFromTimestamp(lastMessageDateTime);
+		}
+		
 		List<MessageJson> messageJsons = new ArrayList<>();
 		for (Message m : messages) {
 			messageJsons.add(m.toMessageJson());
