@@ -79,14 +79,10 @@ public class MessageController {
 		List<Message> messages;
 		LocalDateTime lastMessageDateTime = messageRequestJson.getLastMessageDateTime();
 		
-		System.out.println(lastMessageDateTime);
-		
 		if (lastMessageDateTime == null) {
-			System.out.println("nullだった");
 			User loginUser = sessionControl.getUser();
 			Integer myId = loginUser.getId();
 			Integer peerId = messageRequestJson.getPeerId();
-			System.out.println(String.format("%d, %d", myId, peerId));
 			messages = this.messageRepository.findByUserIdsOrderByTimestamp(myId, peerId);
 		} else {
 			messages = this.messageRepository.findFromTimestamp(lastMessageDateTime);
